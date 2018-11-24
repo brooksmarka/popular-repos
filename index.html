@@ -51,11 +51,33 @@
         )
       }
     }
+     
+
+      function LanguagesList(props){
+        return(
+          <div>
+          <h3>All</h3>
+          <h3>Ruby</h3>
+          <h3>Javascript</h3>
+          <h3>Python</h3>
+          </div>
+        )
+      }
+
+      function ActiveRepoList(props){
+          return(
+            <h2>Current Repo</h2>
+          )
+      }
+
+
+
     class App extends React.Component {
       render() {
         return (
           <div>
-            
+            <LanguagesList />
+            <ActiveRepoList />
           </div>
         )
       }
