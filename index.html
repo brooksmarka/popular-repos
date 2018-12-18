@@ -51,33 +51,49 @@
         )
       }
     }
-     
 
-      function LanguagesList(props){
-        return(
-          <div>
-          <h3>All</h3>
-          <h3>Ruby</h3>
-          <h3>Javascript</h3>
-          <h3>Python</h3>
-          </div>
-        )
-      }
+    function Nav( props) {
+      const languages = ['all', 'javascrpt', 'ruby', 'python']
 
-      function ActiveRepoList(props){
-          return(
-            <h2>Current Repo</h2>
-          )
-      }
+      return(
+        <nav>
+          <ul>
+            {languages.map((lang) => (
+              <li key={lang} onClick={() => props.onSelectLanguage(lang)}>
+              {lang}
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
 
-
-
+    }    
+    
+    
     class App extends React.Component {
+      constructor(props) {
+        super(props)
+
+        this.state = {
+          repos: [],
+          activeLanguage: 'all',
+          loading: true
+        }
+
+        this.handleSelectLanguage = this.handleSelectLanguage.bind(this)
+      }
+
+      handleSelectLanguage(lang) {
+        this.setState({
+          activeLanguage: lang
+        })
+      }
+
       render() {
         return (
           <div>
-            <LanguagesList />
-            <ActiveRepoList />
+           <Nav onSelectLanguage = {this.handleSelectLanguage}/>
+           <h1> ACTIVE LANGUAGE: {this.state.activeLanguage}</h1>
           </div>
         )
       }
